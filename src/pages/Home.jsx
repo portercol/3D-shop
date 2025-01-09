@@ -1,7 +1,7 @@
 import React from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useSnapshot } from "valtio";
-import CustomButton from "../components";
+import { CustomButton } from "../components";
 
 import state from "../store";
 
@@ -28,23 +28,29 @@ const Home = () => {
           </motion.header>
 
           <motion.div className="home-content" {...headContainerAnimation}>
-            <h1 className="head-text">
-              LET'S <br className="xl:block hidden" /> DO IT.
-            </h1>
-          </motion.div>
-          <motion.div {...headContentAnimation} className="flex flex-col gap-4">
-            <p className="max-w-md font-normal text-slate-600 text-base">
-              Create your own unique and exclusive shirt with our brand new 3D
-              customization tool. <strong>Unlease your imagination</strong> and
-              define your own style.
-            </p>
+            <motion.div {...headTextAnimation}>
+              <h1 className="head-text">
+                LET'S <br className="xl:block hidden" /> DO IT.
+              </h1>
+            </motion.div>
 
-            <CustomButton
-              type="filled"
-              title="Customize It"
-              handleClick={() => (state.intro = false)}
-              customStyles="w-fit px-4 py-2.5 font-bold text-sm"
-            />
+            <motion.div
+              {...headContentAnimation}
+              className="flex flex-col gap-4"
+            >
+              <p className="max-w-md font-normal text-slate-600 text-base">
+                Create your own unique and exclusive shirt with our brand new 3D
+                customization tool. <strong>Unlease your imagination</strong>{" "}
+                and define your own style.
+              </p>
+
+              <CustomButton
+                type="filled"
+                title="Customize It"
+                handleClick={() => (state.intro = false)}
+                customStyles="w-fit px-4 py-2.5 font-bold text-sm"
+              />
+            </motion.div>
           </motion.div>
         </motion.section>
       )}
