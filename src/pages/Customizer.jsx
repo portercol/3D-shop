@@ -19,6 +19,29 @@ import {
 const Customizer = () => {
   const snap = useSnapshot(state);
 
+  const [file, setFile] = useState("");
+  const [prompt, setprompt] = useState("");
+  const [generatingImg, setgeneratingImg] = useState(false);
+  const [activeEditorTab, setactiveEditorTab] = useState("");
+  const [activeFilterTab, setactiveFilterTab] = useState({
+    logoShirt: true,
+    stylishShirt: false,
+  });
+
+  // show tab content depending on active tab state
+  const generateTabContent = () => {
+    switch (activeEditorTab) {
+      case "colorpicker":
+        return <ColorPicker />;
+      case "filepicker":
+        return <FilePicker />;
+      case "aipicker":
+        return <AIPicker />;
+      default:
+        return null;
+    }
+  };
+
   return (
     <AnimatePresence>
       {!snap.intro && (
